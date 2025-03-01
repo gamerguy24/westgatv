@@ -1,0 +1,8 @@
+{
+  "name": "west-georgia-tv",
+  "version": "1.0.0",
+  "description": "West Georgia TV streaming platform",
+  "scripts": {
+    "build": "echo \"No build step required\" && exit 0"
+  }
+}
