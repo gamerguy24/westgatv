@@ -1,0 +1,159 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: linear-gradient(to right, #ff0000, #cc0000);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav a,
+.main-nav,
+.main-nav a,
+.main-nav a:hover,
+.main-nav a.active,
+.nav-container {
+    display: none;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+}
+
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.controls {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+/* Radar page specific styles */
+
+#mapid {
+    width: 100%;
+    height: 100%;
+    background: #333;
+}
+
+.leaflet-container {
+    font: inherit;
+}
+
+.stream-info {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+#streamStatus {
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 10px;
+    color: #ffffff;
+}
+
+#streamStatus.live {
+    color: #4CAF50;
+}
+
+#streamStatus.error {
+    color: #f44336;
+}
+
+.nav-tabs {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-tabs a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.nav-tabs a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-tabs .active-tab {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    header {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .logo {
+        height: 40px;
+    }
+}
