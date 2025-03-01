@@ -1,0 +1,6 @@
+name = "west-georgia-tv"
+main = "public/index.html"
+compatibility_date = "2024-03-01"
+
+[site]
+bucket = "./public"
