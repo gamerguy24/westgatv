@@ -1,0 +1,16 @@
+{
+  "name": "west-georgia-tv",
+  "version": "1.0.0",
+  "description": "West Georgia TV streaming platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-media-server": "^2.4.9"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
