@@ -35,39 +35,65 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
     </style>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+    <!-- Your custom styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Welcome to West Georgia TV</h1>
-    </div>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="https://imgur.com/M19NrHM.png" alt="Logo" class="logo">
+                <h1>Welcome to West Georgia TV</h1>
+            </div>
+        </header>
 
-    <div class="content">
-        <p>
-            West Georgia TV was started in 2018 by a group of storm chasers. This storm chasers are a christian team of men & women who enjoy chasing storms, covering live breaking news stories, and providing news worthy stories that the public needs to know about. Safety & News Worthy Stories.
-        </p>
+        <div class="content">
+            <p>
+                West Georgia TV was started in 2018 by a group of storm chasers. This storm chasers are a christian team of men & women who enjoy chasing storms, covering live breaking news stories, and providing news worthy stories that the public needs to know about. Safety & News Worthy Stories.
+            </p>
 
-        <p>
-            West Georgia TV is the first real new media tv not owned by a liberal media corporation. We do not hype up media stories to feed into the lack minded media. We are here to provided real news as its happening & give you the true facts and not what we think is happening. This is a group of people who want to provide you with what's really happening in our local community area.
-        </p>
+            <p>
+                West Georgia TV is the first real new media tv not owned by a liberal media corporation. We do not hype up media stories to feed into the lack minded media. We are here to provided real news as its happening & give you the true facts and not what we think is happening. This is a group of people who want to provide you with what's really happening in our local community area.
+            </p>
 
-        <p>
-            News, Weather, Sports & Church Related Programming. The one thing west georgia doesn't have.
-        </p>
+            <p>
+                News, Weather, Sports & Church Related Programming. The one thing west georgia doesn't have.
+            </p>
 
-        <div class="coverage-area">
-            <h3>Coverage Area</h3>
-            <p>We Currently Cover:</p>
-            <ul>
-                <li>Carroll, Haralson, Heard Counties In Georgia</li>
-                <li>Cleburne & Randolph Counties In Alabama</li>
-            </ul>
+            <div class="coverage-area">
+                <h3>Coverage Area</h3>
+                <p>We Currently Cover:</p>
+                <ul>
+                    <li>Carroll, Haralson, Heard Counties In Georgia</li>
+                    <li>Cleburne & Randolph Counties In Alabama</li>
+                </ul>
+            </div>
+
+            <img class="main-image" src="https://imgur.com/a/XFtSPiI" alt="West Georgia TV">
+
+            <p>
+                And thank you for allowing us to be apart of your family & in your home as we promise & strive to provide you with great service.
+            </p>
         </div>
 
-        <img class="main-image" src="https://imgur.com/a/XFtSPiI" alt="West Georgia TV">
-
-        <p>
-            And thank you for allowing us to be apart of your family & in your home as we promise & strive to provide you with great service.
-        </p>
+        <!-- Add map container for weather functionality -->
+        <div id="mapid" style="display: none; height: 400px;"></div>
+        
+        <!-- Add timestamp display for radar -->
+        <div id="timestamp" style="display: none;"></div>
     </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <!-- Your custom script -->
+    <script src="script.js" defer></script>
+    
+    <!-- Cloudflare Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_SITE_ID"}'></script>
 </body>
 </html>

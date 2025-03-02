@@ -120,3 +120,22 @@ setInterval(() => {
         })
         .catch(error => console.error('Error refreshing radar:', error));
 }, 60000); // Refresh every minute
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the page loaded successfully
+    console.log('Page loaded successfully');
+
+    // Add lazy loading for images
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.loading = 'lazy';
+    });
+
+    // Add simple analytics tracking (if needed)
+    function pageView() {
+        // Add your analytics code here
+        console.log('Page view recorded');
+    }
+
+    pageView();
+});

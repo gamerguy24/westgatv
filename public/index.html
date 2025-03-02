@@ -1,9 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>West Georgia TV</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>West Georgia TV - Home</title>
+    <!-- Cloudflare recommended meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Cloudflare's automatic platform optimization -->
+    <meta name="cf-2fa-verify" content="true">
+    
     <!-- Rumble Script -->
     <script>
         !function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/u48jpft"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");
@@ -33,5 +43,12 @@
     <script>
         Rumble("play", {"video":"v6nnm9c","div":"rumble_v6nnm9c"});
     </script>
+    
+    <!-- Add script at the end of body -->
+    <script src="script.js" defer></script>
+    
+    <!-- Optional: Cloudflare Analytics -->
+    <!-- Replace SITE_ID with your actual Cloudflare Web Analytics site ID -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_SITE_ID"}'></script>
 </body>
 </html>
