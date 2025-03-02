@@ -259,3 +259,44 @@ iframe {
         font-size: 14px;
     }
 }
+
+/* Privacy policy styles */
+
+.privacy-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.policy-content {
+    line-height: 1.8;
+}
+
+.policy-content h2 {
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.policy-content h3 {
+    color: #007bff;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.policy-content ul {
+    margin-left: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.policy-content li {
+    margin-bottom: 0.5rem;
+}
+
+.policy-footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #333;
+    font-style: italic;
+    color: #888;
+}
