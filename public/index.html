@@ -18,6 +18,14 @@
     <script>
         !function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/u48jpft"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");
     </script>
+    <style>
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -27,18 +35,45 @@
                 <h1>West Georgia TV</h1>
             </div>
             <div class="nav-tabs">
-                <a href="/" class="active-tab">Live Stream</a>
-                <a href="/radar.html">Weather Radar</a>
-                <a href="/outlook.html">SPC Outlook</a>
-                <a href="/privacy.html">Privacy Policy</a>
+                <a href="#home" class="tab-link active-tab" data-tab="home-content">Home</a>
+                <a href="#stream" class="tab-link" data-tab="stream-content">Live Stream</a>
+                <a href="#radar" class="tab-link" data-tab="radar-content">Weather Radar</a>
+                <a href="#traffic" class="tab-link" data-tab="traffic-content">Traffic</a>
+                <a href="#privacy" class="tab-link" data-tab="privacy-content">Privacy Policy</a>
             </div>
         </header>
-        <main>
+
+        <!-- Home Content -->
+        <div id="home-content" class="tab-content active">
+            <!-- Content from home.html -->
+            <div class="content">
+                <p>West Georgia TV was started in 2018 by a group of storm chasers...</p>
+                <!-- ...rest of home content... -->
+            </div>
+        </div>
+
+        <!-- Stream Content -->
+        <div id="stream-content" class="tab-content">
             <div class="video-container">
-                <!-- Rumble Stream -->
                 <div id="rumble_v6nnm9c"></div>
             </div>
-        </main>
+        </div>
+
+        <!-- Traffic Content -->
+        <div id="traffic-content" class="tab-content">
+            <iframe 
+                src="https://embed.waze.com/iframe?zoom=12&lat=33.5785&lon=-85.0766" 
+                width="100%" 
+                height="600" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Radar Content -->
+        <div id="radar-content" class="tab-content">
+            <div id="mapid" style="height: 600px;"></div>
+            <div id="timestamp"></div>
+        </div>
     </div>
     <script>
         Rumble("play", {"video":"v6nnm9c","div":"rumble_v6nnm9c"});
@@ -50,5 +85,32 @@
     <!-- Optional: Cloudflare Analytics -->
     <!-- Replace SITE_ID with your actual Cloudflare Web Analytics site ID -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_SITE_ID"}'></script>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active classes
+                    document.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active-tab'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // Add active classes
+                    this.classList.add('active-tab');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // Initialize map if radar tab is selected
+                    if(tabId === 'radar-content') {
+                        map.invalidateSize();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
