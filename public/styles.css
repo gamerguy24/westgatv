@@ -300,3 +300,71 @@ iframe {
     font-style: italic;
     color: #888;
 }
+
+/* Sponsors styles */
+.sponsors-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sponsors-container h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    font-size: 2em;
+}
+
+.sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.sponsor-card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.sponsor-card:hover {
+    transform: translateY(-5px);
+}
+
+.sponsor-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background: #000000;
+    padding: 1rem;
+}
+
+.sponsor-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.sponsor-info h3 {
+    color: #007bff;
+    margin-bottom: 0.5rem;
+    font-size: 1.2em;
+}
+
+.sponsor-info p {
+    color: #ffffff;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sponsor-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sponsor-card img {
+        height: 180px;
+    }
+}
