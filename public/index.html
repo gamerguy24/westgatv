@@ -10,6 +10,7 @@
     
     <!-- External CSS -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     
     <!-- Cloudflare's automatic platform optimization -->
     <meta name="cf-2fa-verify" content="true">
@@ -36,20 +37,41 @@
             </div>
             <div class="nav-tabs">
                 <a href="#home" class="tab-link active-tab" data-tab="home-content">Home</a>
-                <a href="#stream" class="tab-link" data-tab="stream-content">Live Stream</a>
                 <a href="#radar" class="tab-link" data-tab="radar-content">Weather Radar</a>
-                <a href="#traffic" class="tab-link" data-tab="traffic-content">Traffic</a>
+                <a href="#outlook" class="tab-link" data-tab="outlook-content">SPC Outlook</a>
+                <a href="#stream" class="tab-link" data-tab="stream-content">Live Stream</a>
                 <a href="#privacy" class="tab-link" data-tab="privacy-content">Privacy Policy</a>
             </div>
         </header>
 
         <!-- Home Content -->
         <div id="home-content" class="tab-content active">
-            <!-- Content from home.html -->
+            <div class="featured-image">
+                <img src="https://imgur.com/a/iHqKAKV" alt="Featured Image" class="full-width-image">
+            </div>
             <div class="content">
                 <p>West Georgia TV was started in 2018 by a group of storm chasers...</p>
                 <!-- ...rest of home content... -->
             </div>
+        </div>
+
+        <!-- Radar Content -->
+        <div id="radar-content" class="tab-content">
+            <div id="mapid" style="height: 600px;"></div>
+            <div id="timestamp"></div>
+            <div class="radar-controls">
+                <button onclick="toggleAnimation()">Play/Pause</button>
+            </div>
+        </div>
+
+        <!-- Outlook Content -->
+        <div id="outlook-content" class="tab-content">
+            <iframe 
+                src="https://www.spc.noaa.gov/products/outlook/day1otlk.html" 
+                width="100%" 
+                height="800" 
+                frameborder="0">
+            </iframe>
         </div>
 
         <!-- Stream Content -->
@@ -68,18 +90,13 @@
                 allowfullscreen>
             </iframe>
         </div>
-
-        <!-- Radar Content -->
-        <div id="radar-content" class="tab-content">
-            <div id="mapid" style="height: 600px;"></div>
-            <div id="timestamp"></div>
-        </div>
     </div>
     <script>
         Rumble("play", {"video":"v6nnm9c","div":"rumble_v6nnm9c"});
     </script>
     
     <!-- Add script at the end of body -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="script.js" defer></script>
     
     <!-- Optional: Cloudflare Analytics -->
