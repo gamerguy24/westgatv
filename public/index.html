@@ -15,10 +15,8 @@
     <!-- Cloudflare's automatic platform optimization -->
     <meta name="cf-2fa-verify" content="true">
     
-    <!-- Rumble Script -->
-    <script>
-        !function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/u48jpft"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");
-    </script>
+    <!-- Remove Rumble Script and add Facebook SDK -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
     <style>
         .tab-content {
             display: none;
@@ -170,7 +168,11 @@
         <!-- Stream Content -->
         <div id="stream-content" class="tab-content">
             <div class="video-container">
-                <div id="rumble_v6nnm9c"></div>
+                <div class="fb-video" 
+                    data-href="https://www.facebook.com/share/v/15qzK7Ype3/"
+                    data-width="auto"
+                    data-show-text="false">
+                </div>
             </div>
         </div>
 
@@ -257,9 +259,6 @@
             </div>
         </div>
     </div>
-    <script>
-        Rumble("play", {"video":"v6nnm9c","div":"rumble_v6nnm9c"});
-    </script>
     
     <!-- Add script at the end of body -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
