@@ -328,48 +328,63 @@
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_SITE_ID"}'></script>
 
     <script>
-        // Tab functionality
         document.addEventListener('DOMContentLoaded', function() {
             const tabLinks = document.querySelectorAll('.tab-link');
             const tabContents = document.querySelectorAll('.tab-content');
-            let currentTab = localStorage.getItem('activeTab') || 'home-content';
+
+            function refreshTab(tabId) {
+                const tab = document.getElementById(tabId);
+                if (!tab) return;
+
+                // Refresh iframes in the tab
+                const iframes = tab.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    const currentSrc = iframe.src;
+                    iframe.src = '';
+                    requestAnimationFrame(() => {
+                        iframe.src = currentSrc;
+                    });
+                });
+
+                // Refresh Rumble player if present
+                if (tabId === 'stream-content') {
+                    const rumbleDiv = tab.querySelector('.rumble');
+                    if (rumbleDiv) {
+                        const clone = rumbleDiv.cloneNode(true);
+                        rumbleDiv.parentNode.replaceChild(clone, rumbleDiv);
+                    }
+                }
+
+                // Refresh map if present
+                if (tabId === 'radar-content' && typeof map !== 'undefined') {
+                    map.invalidateSize();
+                }
+            }
 
             function switchTab(tabId) {
-                try {
-                    // Hide all tabs
-                    tabContents.forEach(tab => {
-                        tab.classList.remove('active');
-                        tab.style.display = 'none';
+                // Remove active classes
+                tabContents.forEach(tab => {
+                    tab.classList.remove('active');
+                    tab.style.display = 'none';
+                });
+                tabLinks.forEach(link => link.classList.remove('active-tab'));
+
+                // Show selected tab
+                const selectedTab = document.getElementById(tabId);
+                const selectedLink = document.querySelector(`[data-tab="${tabId}"]`);
+
+                if (selectedTab && selectedLink) {
+                    selectedTab.style.display = 'block';
+                    requestAnimationFrame(() => {
+                        selectedTab.classList.add('active');
+                        selectedLink.classList.add('active-tab');
+                        refreshTab(tabId);
                     });
 
-                    // Remove active class from all links
-                    tabLinks.forEach(link => link.classList.remove('active-tab'));
-
-                    // Show selected tab
-                    const selectedTab = document.getElementById(tabId);
-                    const selectedLink = document.querySelector(`[data-tab="${tabId}"]`);
-
-                    if (selectedTab && selectedLink) {
-                        setTimeout(() => {
-                            selectedTab.style.display = 'block';
-                            // Force reflow
-                            selectedTab.offsetHeight;
-                            selectedTab.classList.add('active');
-                            selectedLink.classList.add('active-tab');
-                        }, 50);
-
-                        // Save active tab
-                        localStorage.setItem('activeTab', tabId);
-
-                        // Handle special cases
-                        if(tabId === 'radar-content' && typeof map !== 'undefined') {
-                            setTimeout(() => map.invalidateSize(), 100);
-                        }
-                    }
-                } catch (error) {
-                    console.error('Error switching tabs:', error);
-                    // Fallback to home tab if there's an error
-                    switchTab('home-content');
+                    // Update URL hash without scrolling
+                    const tabName = tabId.replace('-content', '');
+                    history.replaceState(null, null, `#${tabName}`);
+                    localStorage.setItem('activeTab', tabId);
                 }
             }
 
@@ -382,11 +397,23 @@
                 });
             });
 
-            // Initialize with stored tab or default to home
-            switchTab(currentTab);
+            // Auto-refresh active tab every 5 minutes
+            setInterval(() => {
+                const activeTab = document.querySelector('.tab-content.active');
+                if (activeTab) {
+                    refreshTab(activeTab.id);
+                }
+            }, 300000);
 
-            // Handle browser back/forward buttons
-            window.addEventListener('popstate', function() {
+            // Initialize with stored tab or URL hash
+            const hash = window.location.hash.slice(1);
+            const initialTab = hash ? 
+                `${hash}-content` : 
+                localStorage.getItem('activeTab') || 'home-content';
+            switchTab(initialTab);
+
+            // Handle browser back/forward
+            window.addEventListener('hashchange', function() {
                 const hash = window.location.hash.slice(1) || 'home';
                 switchTab(`${hash}-content`);
             });
