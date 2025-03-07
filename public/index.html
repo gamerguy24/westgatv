@@ -20,9 +20,31 @@
     <style>
         .tab-content {
             display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
         }
         .tab-content.active {
             display: block;
+            opacity: 1;
+        }
+        .nav-tabs a {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-tabs a:hover {
+            transform: translateY(-2px);
+        }
+        .nav-tabs .active-tab {
+            position: relative;
+            font-weight: bold;
+        }
+        .nav-tabs .active-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #007bff;
         }
     </style>
 </head>
@@ -309,25 +331,64 @@
         // Tab functionality
         document.addEventListener('DOMContentLoaded', function() {
             const tabLinks = document.querySelectorAll('.tab-link');
-            
+            const tabContents = document.querySelectorAll('.tab-content');
+            let currentTab = localStorage.getItem('activeTab') || 'home-content';
+
+            function switchTab(tabId) {
+                try {
+                    // Hide all tabs
+                    tabContents.forEach(tab => {
+                        tab.classList.remove('active');
+                        tab.style.display = 'none';
+                    });
+
+                    // Remove active class from all links
+                    tabLinks.forEach(link => link.classList.remove('active-tab'));
+
+                    // Show selected tab
+                    const selectedTab = document.getElementById(tabId);
+                    const selectedLink = document.querySelector(`[data-tab="${tabId}"]`);
+
+                    if (selectedTab && selectedLink) {
+                        setTimeout(() => {
+                            selectedTab.style.display = 'block';
+                            // Force reflow
+                            selectedTab.offsetHeight;
+                            selectedTab.classList.add('active');
+                            selectedLink.classList.add('active-tab');
+                        }, 50);
+
+                        // Save active tab
+                        localStorage.setItem('activeTab', tabId);
+
+                        // Handle special cases
+                        if(tabId === 'radar-content' && typeof map !== 'undefined') {
+                            setTimeout(() => map.invalidateSize(), 100);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error switching tabs:', error);
+                    // Fallback to home tab if there's an error
+                    switchTab('home-content');
+                }
+            }
+
+            // Set up click handlers
             tabLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    // Remove active classes
-                    document.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active-tab'));
-                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                    
-                    // Add active classes
-                    this.classList.add('active-tab');
                     const tabId = this.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
-                    
-                    // Initialize map if radar tab is selected
-                    if(tabId === 'radar-content') {
-                        map.invalidateSize();
-                    }
+                    switchTab(tabId);
                 });
+            });
+
+            // Initialize with stored tab or default to home
+            switchTab(currentTab);
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', function() {
+                const hash = window.location.hash.slice(1) || 'home';
+                switchTab(`${hash}-content`);
             });
         });
     </script>
