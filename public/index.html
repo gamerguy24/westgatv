@@ -231,17 +231,21 @@
         <!-- Stream Content -->
         <div id="stream-content" class="tab-content">
             <div class="video-container">
+                <script>
+                (function(d, s, u) {
+                    var js, fjs = d.getElementsByTagName(s)[0], r = u.match(/[^\/]+$/)[0];
+                    js = d.createElement(s);
+                    js.async = 1;
+                    js.src = 'https://rumble.com/embedJS/u' + r + '/?play=1';
+                    fjs.parentNode.insertBefore(js, fjs);
+                })(document, 'script', 'https://rumble.com/user/StormChaserNathan');
+                </script>
                 <div class="rumble" 
-                    data-user="StormChaserNathan"
-                    data-width="100%" 
-                    data-height="100%"
+                    data-user="StormChaserNathan" 
                     data-channel="true"
-                    data-live-only="true"
-                    data-latest-video="true"
-                    data-no-playlist="true"
-                    data-autoplay="true"
-                    data-mute="false"
-                    data-quality="1080p">
+                    data-type="Livestream"
+                    data-src="https://rumble.com/user/StormChaserNathan"
+                    style="width: 100%; padding-bottom: 56.25%; position: relative;">
                 </div>
             </div>
         </div>
