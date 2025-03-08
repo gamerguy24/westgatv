@@ -20,9 +20,11 @@
     <style>
         .tab-content {
             display: none;
+            pointer-events: none;
         }
         .tab-content.active {
             display: block;
+            pointer-events: auto;
         }
         .nav-tabs {
             display: flex;
@@ -30,6 +32,9 @@
             flex-wrap: wrap;
             gap: 10px;
             padding: 10px;
+            pointer-events: auto;
+            z-index: 100;
+            position: relative;
         }
         .nav-tabs a {
             padding: 8px 16px;
@@ -38,10 +43,18 @@
             text-decoration: none;
             border-radius: 4px;
             cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
         }
         .nav-tabs .active-tab {
             background: #007bff;
             color: white;
+            pointer-events: none;
+        }
+        .video-container {
+            pointer-events: auto;
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
@@ -325,57 +338,68 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const tabs = {};
-            document.querySelectorAll('.tab-link').forEach(link => {
-                const tabId = link.getAttribute('data-tab');
-                tabs[tabId] = {
-                    link: link,
-                    content: document.getElementById(tabId)
-                };
-            });
+            const tabs = document.querySelectorAll('.tab-link');
+            const contents = document.querySelectorAll('.tab-content');
+            let activeTab = null;
 
-            function activateTab(tabId) {
-                // Deactivate all tabs
-                Object.values(tabs).forEach(tab => {
-                    tab.link.classList.remove('active-tab');
-                    tab.content.classList.remove('active');
+            function switchTab(targetId) {
+                if (activeTab === targetId) return;
+                
+                // Cleanup old tab
+                if (activeTab === 'stream-content') {
+                    const oldRumble = document.querySelector('#stream-content .rumble');
+                    if (oldRumble) {
+                        oldRumble.innerHTML = '';
+                    }
+                }
+
+                // Hide all tabs
+                contents.forEach(content => {
+                    content.style.display = 'none';
+                    content.classList.remove('active');
                 });
+                tabs.forEach(tab => tab.classList.remove('active-tab'));
 
-                // Activate selected tab
-                if (tabs[tabId]) {
-                    tabs[tabId].link.classList.add('active-tab');
-                    tabs[tabId].content.classList.add('active');
+                // Show new tab
+                const newTab = document.getElementById(targetId);
+                const newTabLink = document.querySelector(`[data-tab="${targetId}"]`);
+                
+                if (newTab && newTabLink) {
+                    newTab.style.display = 'block';
+                    setTimeout(() => {
+                        newTab.classList.add('active');
+                        newTabLink.classList.add('active-tab');
+                    }, 0);
 
-                    // Handle special cases
-                    if (tabId === 'radar-content' && typeof map !== 'undefined') {
-                        setTimeout(() => map.invalidateSize(), 100);
+                    // Handle Rumble stream
+                    if (targetId === 'stream-content') {
+                        const rumble = document.querySelector('#stream-content .rumble');
+                        if (rumble) {
+                            const clone = rumble.cloneNode(true);
+                            rumble.parentNode.replaceChild(clone, rumble);
+                        }
                     }
 
-                    // Refresh iframes
-                    const iframes = tabs[tabId].content.querySelectorAll('iframe');
-                    iframes.forEach(iframe => {
-                        if (iframe.src) iframe.src = iframe.src;
-                    });
+                    activeTab = targetId;
+                    history.replaceState(null, null, `#${targetId.replace('-content', '')}`);
                 }
             }
 
-            // Click handlers
-            Object.keys(tabs).forEach(tabId => {
-                tabs[tabId].link.addEventListener('click', (e) => {
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
                     e.preventDefault();
-                    activateTab(tabId);
-                    history.pushState(null, null, `#${tabId.replace('-content', '')}`);
-                });
+                    e.stopPropagation();
+                    const tabId = tab.getAttribute('data-tab');
+                    switchTab(tabId);
+                }, { passive: false });
             });
 
-            // Handle initial load and navigation
             const hash = window.location.hash.slice(1);
-            activateTab(hash ? `${hash}-content` : 'home-content');
+            switchTab(hash ? `${hash}-content` : 'home-content');
 
-            // Handle browser back/forward
             window.addEventListener('hashchange', () => {
                 const hash = window.location.hash.slice(1);
-                activateTab(hash ? `${hash}-content` : 'home-content');
+                switchTab(hash ? `${hash}-content` : 'home-content');
             });
         });
     </script>
