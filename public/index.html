@@ -15,8 +15,6 @@
     <!-- Cloudflare's automatic platform optimization -->
     <meta name="cf-2fa-verify" content="true">
     
-    <!-- Remove Facebook SDK and add Rumble SDK -->
-    <script type="text/javascript" src="https://rumble.com/embedJS/u3"></script>
     <style>
         .tab-content {
             display: none;
@@ -57,6 +55,8 @@
             z-index: 1;
         }
     </style>
+    <!-- Add Rumble SDK -->
+    <script src="https://rumble.com/embedJS/script.js" async></script>
 </head>
 <body>
     <div class="container">
@@ -228,24 +228,22 @@
             </div>
         </div>
 
-        <!-- Stream Content -->
+        <!-- Add Stream Content before Traffic Content -->
         <div id="stream-content" class="tab-content">
             <div class="video-container">
-                <script>
-                (function(d, s, u) {
-                    var js, fjs = d.getElementsByTagName(s)[0], r = u.match(/[^\/]+$/)[0];
-                    js = d.createElement(s);
-                    js.async = 1;
-                    js.src = 'https://rumble.com/embedJS/u' + r + '/?play=1';
-                    fjs.parentNode.insertBefore(js, fjs);
-                })(document, 'script', 'https://rumble.com/user/StormChaserNathan');
-                </script>
-                <div class="rumble" 
-                    data-user="StormChaserNathan" 
-                    data-channel="true"
-                    data-type="Livestream"
-                    data-src="https://rumble.com/user/StormChaserNathan"
-                    style="width: 100%; padding-bottom: 56.25%; position: relative;">
+                <h2>Live Stream</h2>
+                <div id="rumble-embed" style="width: 100%; padding-bottom: 56.25%; position: relative;">
+                    <iframe 
+                        src="https://rumble.com/embed/u37x1hi/?pub=4" 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="https://rumble.com/user/StormChaserNathan" target="_blank" class="visit-channel">
+                        Visit Channel
+                    </a>
                 </div>
             </div>
         </div>
@@ -349,14 +347,6 @@
 
             function switchTab(targetId) {
                 if (activeTab === targetId) return;
-                
-                // Cleanup old tab
-                if (activeTab === 'stream-content') {
-                    const oldRumble = document.querySelector('#stream-content .rumble');
-                    if (oldRumble) {
-                        oldRumble.innerHTML = '';
-                    }
-                }
 
                 // Hide all tabs
                 contents.forEach(content => {
@@ -371,20 +361,8 @@
                 
                 if (newTab && newTabLink) {
                     newTab.style.display = 'block';
-                    setTimeout(() => {
-                        newTab.classList.add('active');
-                        newTabLink.classList.add('active-tab');
-                    }, 0);
-
-                    // Handle Rumble stream
-                    if (targetId === 'stream-content') {
-                        const rumble = document.querySelector('#stream-content .rumble');
-                        if (rumble) {
-                            const clone = rumble.cloneNode(true);
-                            rumble.parentNode.replaceChild(clone, rumble);
-                        }
-                    }
-
+                    newTab.classList.add('active');
+                    newTabLink.classList.add('active-tab');
                     activeTab = targetId;
                     history.replaceState(null, null, `#${targetId.replace('-content', '')}`);
                 }
