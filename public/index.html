@@ -55,8 +55,8 @@
             z-index: 1;
         }
     </style>
-    <!-- Add Rumble SDK -->
-    <script src="https://rumble.com/embedJS/script.js" async></script>
+    <!-- Remove Rumble SDK and add Facebook SDK -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
 </head>
 <body>
     <div class="container">
@@ -232,16 +232,23 @@
         <div id="stream-content" class="tab-content">
             <div class="video-container">
                 <h2>Live Streams</h2>
-                <div id="rumble_StormChaserNathan">
-                    <script>
-                        (function(d, s) {
-                            var js = d.createElement(s),
-                                rjs = d.getElementsByTagName(s)[0];
-                            js.src = "https://rumble.com/embed/v1hmudj/?pub=4";
-                            js.id = "rumble_StormChaserNathan";
-                            rjs.parentNode.insertBefore(js, rjs);
-                        }(document, 'script'));
-                    </script>
+                <div class="fb-stream-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <!-- Primary Stream -->
+                    <div class="fb-video" 
+                        data-href="https://www.facebook.com/WGTVnow/live_videos"
+                        data-width="auto"
+                        data-show-text="false"
+                        data-autoplay="true"
+                        data-allowfullscreen="true">
+                    </div>
+                    <!-- Backup Stream -->
+                    <div class="fb-video" 
+                        data-href="https://www.facebook.com/1WGTV/live_videos"
+                        data-width="auto"
+                        data-show-text="false"
+                        data-autoplay="true"
+                        data-allowfullscreen="true">
+                    </div>
                 </div>
             </div>
         </div>
