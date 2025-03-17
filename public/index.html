@@ -70,8 +70,12 @@
             max-width: 1200px;
         }
     </style>
-    <!-- Remove Rumble SDK and add Facebook SDK -->
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
+    <!-- Replace Facebook SDK code -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" 
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0&appId=YOUR_APP_ID" 
+        nonce="YOUR_NONCE">
+    </script>
 </head>
 <body>
     <div class="container">
@@ -213,7 +217,7 @@
             </iframe>
         </div>
 
-        <!-- Add Videos Content (add before stream content) -->
+        <!-- Videos Content -->
         <div id="videos-content" class="tab-content">
             <div class="licensing-banner">
                 NOT FOR REBROADCAST - CONTACT westgeorgiatv@outlook.com for licensing
@@ -221,27 +225,23 @@
             <div class="videos-container">
                 <h2>Video Archive</h2>
                 <div class="fb-videos-container">
-                    <!-- Video Grid -->
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                        <!-- Video 1 -->
                         <div class="fb-video" 
-                            data-href="https://www.facebook.com/WGTVnow/videos/14hVMhMZ8z"
+                            data-href="https://www.facebook.com/WGTVnow/videos/1315251949749879"
                             data-width="auto"
                             data-show-text="true"
                             data-allowfullscreen="true">
                         </div>
                         
-                        <!-- Video 2 -->
                         <div class="fb-video" 
-                            data-href="https://www.facebook.com/WGTVnow/videos/12LnrYt3bSy"
+                            data-href="https://www.facebook.com/WGTVnow/videos/1121719512406283"
                             data-width="auto"
                             data-show-text="true"
                             data-allowfullscreen="true">
                         </div>
                         
-                        <!-- Video 3 -->
                         <div class="fb-video" 
-                            data-href="https://www.facebook.com/WGTVnow/videos/1J2R6Yh6EP"
+                            data-href="https://www.facebook.com/WGTVnow/videos/613210348369125"
                             data-width="auto"
                             data-show-text="true"
                             data-allowfullscreen="true">
