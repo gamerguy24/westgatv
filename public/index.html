@@ -54,6 +54,21 @@
             position: relative;
             z-index: 1;
         }
+        .licensing-banner {
+            background-color: #ff0000;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .fb-videos-container {
+            margin: 20px auto;
+            max-width: 1200px;
+        }
     </style>
     <!-- Remove Rumble SDK and add Facebook SDK -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
@@ -200,29 +215,36 @@
 
         <!-- Add Videos Content (add before stream content) -->
         <div id="videos-content" class="tab-content">
+            <div class="licensing-banner">
+                NOT FOR REBROADCAST - CONTACT westgeorgiatv@outlook.com for licensing
+            </div>
             <div class="videos-container">
-                <h2>Featured Videos</h2>
-                <div class="video-grid">
-                    <div class="video-card">
-                        <div class="fb-video" 
-                            data-href="https://www.facebook.com/WGTVnow/videos/428250890376801"
-                            data-width="auto"
-                            data-show-text="false">
-                        </div>
-                        <h3>Live Weather Coverage</h3>
+                <h2>Video Archive</h2>
+                <div class="fb-videos-container">
+                    <h3>WGTV Main Channel</h3>
+                    <!-- Primary Channel Videos -->
+                    <div class="fb-page" 
+                        data-href="https://www.facebook.com/WGTVnow"
+                        data-tabs="timeline,videos,live_videos"
+                        data-width="1200"
+                        data-height="800"
+                        data-small-header="true"
+                        data-adapt-container-width="true"
+                        data-hide-cover="false"
+                        data-show-facepile="false">
                     </div>
                     
-                    <div class="video-card">
-                        <div class="youtube-video">
-                            <iframe
-                                src="https://www.youtube.com/embed/IeCaxwAp3Cc"
-                                title="Storm Coverage"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <h3>Storm Coverage Short</h3>
+                    <h3 style="margin-top: 40px;">WGTV Backup Channel</h3>
+                    <!-- Backup Channel Videos -->
+                    <div class="fb-page" 
+                        data-href="https://www.facebook.com/1WGTV"
+                        data-tabs="timeline,videos,live_videos"
+                        data-width="1200"
+                        data-height="800"
+                        data-small-header="true"
+                        data-adapt-container-width="true"
+                        data-hide-cover="false"
+                        data-show-facepile="false">
                     </div>
                 </div>
             </div>
