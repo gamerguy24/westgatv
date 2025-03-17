@@ -70,11 +70,11 @@
             max-width: 1200px;
         }
     </style>
-    <!-- Replace Facebook SDK code -->
+    <!-- Update Facebook SDK with proper initialization -->
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" 
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0&appId=YOUR_APP_ID" 
-        nonce="YOUR_NONCE">
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" 
+        nonce="random123">
     </script>
 </head>
 <body>
@@ -251,27 +251,22 @@
             </div>
         </div>
 
-        <!-- Stream Content -->
+        <!-- Update Stream Content section -->
         <div id="stream-content" class="tab-content">
             <div class="video-container">
-                <h2>Live Streams</h2>
-                <div class="fb-stream-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <!-- Primary Stream -->
-                    <div class="fb-video" 
-                        data-href="https://www.facebook.com/WGTVnow/live_videos"
-                        data-width="auto"
-                        data-show-text="false"
-                        data-autoplay="true"
-                        data-allowfullscreen="true">
-                    </div>
-                    <!-- Backup Stream -->
-                    <div class="fb-video" 
-                        data-href="https://www.facebook.com/1WGTV/live_videos"
-                        data-width="auto"
-                        data-show-text="false"
-                        data-autoplay="true"
-                        data-allowfullscreen="true">
-                    </div>
+                <h2>Live Stream</h2>
+                <div class="fb-page" 
+                    data-href="https://www.facebook.com/WGTVnow"
+                    data-tabs="live_videos"
+                    data-width="800"
+                    data-height="600"
+                    data-small-header="false"
+                    data-adapt-container-width="true"
+                    data-hide-cover="false"
+                    data-show-facepile="false">
+                    <blockquote cite="https://www.facebook.com/WGTVnow" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/WGTVnow">West Georgia TV</a>
+                    </blockquote>
                 </div>
             </div>
         </div>
