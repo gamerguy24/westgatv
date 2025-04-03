@@ -542,3 +542,35 @@ iframe {
     height: 100%;
     border: none;
 }
+
+/* Weather section styles */
+.weather-grid {
+    display: grid;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.weather-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.county-weather {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.weather-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.weather-data {
+    margin-top: 1rem;
+    font-size: 1.1em;
+}

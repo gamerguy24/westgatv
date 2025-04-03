@@ -88,6 +88,7 @@
                 <a href="#home" class="tab-link active-tab" data-tab="home-content">Home</a>
                 <a href="#team" class="tab-link" data-tab="team-content">Meet the Team</a>
                 <a href="#radar" class="tab-link" data-tab="radar-content">Weather Radar</a>
+                <a href="#weather" class="tab-link" data-tab="weather-content">Current Weather</a>
                 <a href="#alerts" class="tab-link" data-tab="alerts-content">Weather Alerts</a>
                 <a href="#outlook" class="tab-link" data-tab="outlook-content">SPC Outlook</a>
                 <a href="#videos" class="tab-link" data-tab="videos-content">Videos</a>
@@ -210,6 +211,47 @@
                 frameborder="0"
                 allowfullscreen>
             </iframe>
+        </div>
+
+        <!-- Add Weather Content before Alerts Content -->
+        <div id="weather-content" class="tab-content">
+            <div class="weather-container">
+                <h2>Current Weather Conditions</h2>
+                <div class="weather-grid">
+                    <!-- Georgia Counties -->
+                    <div class="weather-section">
+                        <h3>Georgia Counties</h3>
+                        <div id="ga-weather" class="county-weather">
+                            <div class="weather-card" id="carroll-weather">
+                                <h4>Carroll County</h4>
+                                <div class="weather-data"></div>
+                            </div>
+                            <div class="weather-card" id="haralson-weather">
+                                <h4>Haralson County</h4>
+                                <div class="weather-data"></div>
+                            </div>
+                            <div class="weather-card" id="heard-weather">
+                                <h4>Heard County</h4>
+                                <div class="weather-data"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Alabama Counties -->
+                    <div class="weather-section">
+                        <h3>Alabama Counties</h3>
+                        <div id="al-weather" class="county-weather">
+                            <div class="weather-card" id="cleburne-weather">
+                                <h4>Cleburne County</h4>
+                                <div class="weather-data"></div>
+                            </div>
+                            <div class="weather-card" id="randolph-weather">
+                                <h4>Randolph County</h4>
+                                <div class="weather-data"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Add Audio Alerts Content (add after radar content) -->
