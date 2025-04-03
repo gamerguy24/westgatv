@@ -9,18 +9,24 @@ const counties = {
 async function fetchWeather(county, coords) {
     try {
         const response = await fetch(
-            `https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
+            `https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current=temperature_2m,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America/New_York`
         );
         const data = await response.json();
         
         const element = document.getElementById(`${county}-weather`).querySelector('.weather-data');
-        element.innerHTML = `
-            <p>Temperature: ${data.current.temperature_2m}°C</p>
-            <p>Wind Speed: ${data.current.wind_speed_10m} km/h</p>
-            <p>Last Updated: ${new Date(data.current.time).toLocaleString()}</p>
-        `;
+        if (element && data.current) {
+            element.innerHTML = `
+                <p class="temp">Temperature: ${Math.round(data.current.temperature_2m)}°F</p>
+                <p class="wind">Wind Speed: ${Math.round(data.current.wind_speed_10m)} MPH</p>
+                <p class="time">Updated: ${new Date().toLocaleTimeString()}</p>
+            `;
+        }
     } catch (error) {
         console.error(`Error fetching weather for ${county}:`, error);
+        const element = document.getElementById(`${county}-weather`).querySelector('.weather-data');
+        if (element) {
+            element.innerHTML = `<p class="error">Weather data currently unavailable</p>`;
+        }
     }
 }
 
