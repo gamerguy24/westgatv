@@ -284,13 +284,12 @@
                         <img src="https://i.imgur.com/JxAceax.png" alt="Partner Logo">
                     </div>
                     <iframe 
-                        src="https://zello.com/channel-listen-widget?channel=WGTV%20SCANNER&wmode=opaque&nopanel=false"
-                        sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups"
-                        style="width: 100%; height: 400px; border: none; border-radius: 8px;"
+                        src="https://zello.com/channel-listen-widget?channel=WGTV%20SCANNER&wmode=transparent"
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups allow-downloads"
+                        style="width: 100%; height: 400px; border: none; border-radius: 8px; pointer-events: auto;"
                         allow="microphone; autoplay"
                         referrerpolicy="origin"
-                        id="scannerFrame"
-                        onload="this.contentWindow.postMessage('unmute', '*')">
+                        id="scannerFrame">
                     </iframe>
                 </div>
             </div>

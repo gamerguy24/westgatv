@@ -674,12 +674,12 @@ iframe {
 }
 
 .scanner-frame {
+    position: relative;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     padding: 1rem;
     margin-top: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    position: relative;
 }
 
 .scanner-frame .logo-overlay {
@@ -688,10 +688,9 @@ iframe {
     right: 10px;
     display: flex;
     gap: 10px;
-    z-index: 1000;
+    z-index: 1;
     padding: 5px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
 }
 
 .scanner-frame .logo-overlay img {
@@ -702,6 +701,8 @@ iframe {
 }
 
 .scanner-frame iframe {
+    position: relative;
+    z-index: 2;
     box-shadow: none;
     background: transparent;
 }
