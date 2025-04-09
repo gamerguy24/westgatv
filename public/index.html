@@ -269,12 +269,15 @@
                 </div>
                 <div class="hidden-scanner">
                     <iframe 
-                        src="https://zello.com/channel-listen-widget?channel=WGTV%20SCANNER&wmode=opaque"
-                        style="position: absolute; visibility: hidden;"
-                        allow="microphone"
+                        src="https://zello.com/channel-listen-widget?channel=WGTV%20SCANNER&wmode=opaque&autoplay=true&unmute=true"
+                        style="position: absolute; visibility: hidden; pointer-events: none;"
+                        allow="microphone; autoplay"
                         id="scannerFrame">
                     </iframe>
                 </div>
+                <p class="scanner-note" style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                    Note: You may need to click the Start button twice on first use to enable audio.
+                </p>
             </div>
         </div>
         <!-- Add Audio Alerts Content (add after radar content) -->
