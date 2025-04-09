@@ -672,3 +672,16 @@ iframe {
     overflow: hidden;
     position: absolute;
 }
+
+.scanner-frame {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.scanner-frame iframe {
+    box-shadow: none;
+    background: transparent;
+}
