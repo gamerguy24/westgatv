@@ -689,9 +689,9 @@ iframe {
     display: flex;
     gap: 10px;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.5);
     padding: 5px;
     border-radius: 4px;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .scanner-frame .logo-overlay img {
