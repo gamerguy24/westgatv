@@ -48,4 +48,17 @@ document.addEventListener('DOMContentLoaded', function() {
             isPlaying = false;
         }
     });
+
+    // Handle messages from iframe
+    window.addEventListener('message', function(event) {
+        if (event.data === 'ready') {
+            // Try to unmute when frame is ready
+            scannerFrame.contentWindow.postMessage('unmute', '*');
+        }
+    });
+
+    // Add click handler to help with autoplay/unmute
+    scannerFrame.addEventListener('click', function() {
+        scannerFrame.contentWindow.postMessage('unmute', '*');
+    });
 });
