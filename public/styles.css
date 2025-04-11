@@ -682,6 +682,25 @@ iframe {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+.mobile-unmute {
+    display: none;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .mobile-unmute {
+        display: block;
+    }
+}
+
 .scanner-frame iframe {
     width: 100%;
     height: 400px;
