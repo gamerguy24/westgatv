@@ -526,12 +526,23 @@ iframe {
 }
 
 /* YouTube video styles */
+.youtube-videos {
+    margin-bottom: 40px;
+}
+
+.youtube-videos h3 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
 .youtube-video {
     position: relative;
-    padding-bottom: 177.77%; /* For shorts aspect ratio (9:16) */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
     height: 0;
     overflow: hidden;
     background: #000;
+    border-radius: 8px;
 }
 
 .youtube-video iframe {
