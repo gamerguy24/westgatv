@@ -719,3 +719,23 @@ iframe {
     border-radius: 8px;
     background: transparent;
 }
+
+/* Ambassador section styles */
+.ambassador-section {
+    margin-top: 3rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.ambassador-section img {
+    width: 150px;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.ambassador-section p {
+    color: #ffffff;
+    font-size: 1.1em;
+    margin-top: 0.5rem;
+}
