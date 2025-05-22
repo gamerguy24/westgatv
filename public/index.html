@@ -84,6 +84,12 @@
             max-width: 150px;
             height: auto;
         }
+        .copyright {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #888;
+        }
     </style>
     <!-- Update Facebook SDK with proper initialization -->
     <div id="fb-root"></div>
@@ -103,7 +109,6 @@
                 <a href="#home" class="tab-link active-tab" data-tab="home-content">Home</a>
                 <a href="#team" class="tab-link" data-tab="team-content">Meet the Weather Team</a>
                 <a href="#radar" class="tab-link" data-tab="radar-content">Weather Radar</a>
-                <a href="#weather" class="tab-link" data-tab="weather-content">Current Weather</a>
                 <a href="#scanner" class="tab-link" data-tab="scanner-content">Team Scanner</a>
                 <a href="#alerts" class="tab-link" data-tab="alerts-content">Weather Alerts</a>
                 <a href="#outlook" class="tab-link" data-tab="outlook-content">SPC Outlook</a>
@@ -227,16 +232,6 @@
         </div>
         <!-- Radar Content -->
         <div id="radar-content" class="tab-content">
-            <iframe 
-                src="https://west-ga-tv-radar.onrender.com/"
-                width="100%" 
-                height="800" 
-                frameborder="0"
-                allowfullscreen>
-            </iframe>
-        </div>
-        <!-- Add Weather Content before Alerts Content -->
-        <div id="weather-content" class="tab-content">
             <div class="weather-container">
                 <h2>Current Weather Conditions</h2>
                 <div class="weather-grid">
@@ -274,6 +269,13 @@
                     </div>
                 </div>
             </div>
+            <iframe 
+                src="https://west-ga-tv-radar.onrender.com/"
+                width="100%" 
+                height="800" 
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
         </div>
         <!-- Add Scanner Content -->
         <div id="scanner-content" class="tab-content">
@@ -509,6 +511,7 @@
     <div class="ambassador-section">
         <img src="https://i.imgur.com/4hjUjPl.png" alt="Weather-Ready Ambassador Logo">
         <p>We are proud to be a NOAA Weather-Ready Nation Ambassador™</p>
+        <p class="copyright">© 2024 West Georgia TV - Providing accurate and timely weather coverage to our communities. All rights reserved.</p>
     </div>
     <!-- Add script at the end of body -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
