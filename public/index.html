@@ -90,6 +90,37 @@
             font-size: 0.9em;
             color: #888;
         }
+        .maintenance-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .maintenance-overlay h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff0000;
+        }
+        .maintenance-overlay p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            max-width: 600px;
+        }
+        .maintenance-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 30px;
+        }
     </style>
     <!-- Update Facebook SDK with proper initialization -->
     <div id="fb-root"></div>
@@ -99,6 +130,17 @@
     </script>
 </head>
 <body>
+    <div class="maintenance-overlay">
+        <img src="https://imgur.com/M19NrHM.png" alt="WGTV Logo" class="maintenance-logo">
+        <h1>Site Under Maintenance</h1>
+        <p>We're currently updating our systems to serve you better.</p>
+        <p>Expected downtime: 1-2 hours</p>
+        <p>Please check our social media for updates:</p>
+        <div style="margin-top: 20px;">
+            <a href="https://www.facebook.com/WGTVnow/" style="color: #fff; margin: 0 10px;">Facebook</a>
+            <a href="https://x.com/WGTV2018" style="color: #fff; margin: 0 10px;">Twitter</a>
+        </div>
+    </div>
     <div class="container">
         <header>
             <div class="header-content">
